@@ -6,10 +6,15 @@
 
 <p align="center">
 <b>
-<a href="https://github.com/LongfeiH">Longfei Huang</a><sup>1,2*</sup>, 
-<a href="https://github.com/liangyufz">Yu Liang</a><sup>2*</sup>, 
-<a href="https://scholar.google.com/citations?hl=zh-CN&user=DwzGTQsAAAAJ">Hao Zhang</a><sup>2</sup>, 
-<a href="https://scholar.google.com/citations?user=85QJ_i4AAAAJ&hl=zh-CN">Peng-Tao Jiang</a><sup>2†</sup>
+Longfei Huang<sup>1,2*</sup>, 
+Yu Liang<sup>2*</sup>, 
+Hao Zhang<sup>2</sup>, 
+Jinwei Chen<sup>2</sup>, 
+Wei Dong<sup>2</sup><br>
+Lunde Chen<sup>1</sup>, 
+Wanyu Liu<sup>1</sup>, 
+Bo Li<sup>2</sup>, 
+Peng-Tao Jiang<sup>2†</sup>
 </b>
 </p>
 
