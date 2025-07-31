@@ -39,7 +39,6 @@
 - [Installation](#installation)
 - [Dataset](#dataset)
 - [Pretrained Model](#pretrained-model)
-- [Training](#training)
 - [Test](#test)
 
 ## Introduction
