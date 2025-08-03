@@ -1,5 +1,5 @@
 import torch
-from transformers import CLIPTextModel, CLIPTokenizer
+from transformers import CLIPTextModel, CLIPTokenizer, CLIPTextConfig
 import torch.nn as nn
 import torch.nn.functional as F
 from diffusers import DDIMScheduler, AutoencoderKL, UNet2DConditionModel
@@ -7,6 +7,7 @@ from diffusers.models.embeddings import get_timestep_embedding
 from utils import replace_unet_conv_in, replace_attention_mask_method, add_aux_conv_in
 from utils.replace import CustomUNet
 import random
+import os
 
 AUX_INPUT_DIT = {
     "auto_mask": "auto_coords",
@@ -15,8 +16,7 @@ AUX_INPUT_DIT = {
     "mask": "mask_coords",
     "trimap": "trimap_coords",
 }
-
-
+        
 class SDMatte(nn.Module):
     def __init__(
         self,
@@ -36,15 +36,10 @@ class SDMatte(nn.Module):
         residual_connection=False,
         use_attention_mask_list=[True, True, True],
         use_encoder_hidden_states_list=[True, True, True],
+        load_weight = True,
     ):
         super().__init__()
-        self.text_encoder = CLIPTextModel.from_pretrained(pretrained_model_name_or_path, subfolder="text_encoder")
-        self.vae = AutoencoderKL.from_pretrained(pretrained_model_name_or_path, subfolder="vae")
-        self.unet = CustomUNet.from_pretrained(
-            pretrained_model_name_or_path, subfolder="unet", low_cpu_mem_usage=True, ignore_mismatched_sizes=False
-        )
-        self.noise_scheduler = DDIMScheduler.from_pretrained(pretrained_model_name_or_path, subfolder="scheduler")
-        self.tokenizer = CLIPTokenizer.from_pretrained(pretrained_model_name_or_path, subfolder="tokenizer")
+        self.init_submodule(pretrained_model_name_or_path, load_weight)
         self.num_inference_steps = num_inference_steps
         self.aux_input = aux_input
         self.use_aux_input = use_aux_input
@@ -70,6 +65,35 @@ class SDMatte(nn.Module):
         self.unet.train()
         self.unet.use_attention_mask_list = use_attention_mask_list
         self.unet.use_encoder_hidden_states_list = use_encoder_hidden_states_list
+    
+    def init_submodule(self, pretrained_model_name_or_path, load_weight):
+        if load_weight:
+            self.text_encoder = CLIPTextModel.from_pretrained(pretrained_model_name_or_path, subfolder="text_encoder")
+            self.vae = AutoencoderKL.from_pretrained(pretrained_model_name_or_path, subfolder="vae")
+            self.unet = CustomUNet.from_pretrained(
+                pretrained_model_name_or_path, subfolder="unet", low_cpu_mem_usage=True, ignore_mismatched_sizes=False
+            )
+            self.noise_scheduler = DDIMScheduler.from_pretrained(pretrained_model_name_or_path, subfolder="scheduler")
+            self.tokenizer = CLIPTokenizer.from_pretrained(pretrained_model_name_or_path, subfolder="tokenizer")
+        else:
+            text_config = CLIPTextConfig.from_pretrained(pretrained_model_name_or_path, subfolder="text_encoder")
+            self.text_encoder = CLIPTextModel(text_config)
+
+            vae_path = os.path.join(pretrained_model_name_or_path, "vae")
+            self.vae = AutoencoderKL.from_config(AutoencoderKL.load_config(vae_path))
+
+            unet_path = os.path.join(pretrained_model_name_or_path, "unet")
+            self.unet = CustomUNet.from_config(
+                CustomUNet.load_config(unet_path),
+                low_cpu_mem_usage=True,
+                ignore_mismatched_sizes=False
+            )
+
+            scheduler_path = os.path.join(pretrained_model_name_or_path, "scheduler", "scheduler_config.json")
+            self.noise_scheduler = DDIMScheduler.from_config(DDIMScheduler.load_config(scheduler_path))
+
+            self.tokenizer = CLIPTokenizer.from_pretrained(pretrained_model_name_or_path, subfolder="tokenizer")
+
 
     def forward(self, data):
         rgb = data["image"].cuda()

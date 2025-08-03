@@ -2,7 +2,7 @@
 
 SETNAME="AM-2K"
 CONFIG_DIR="configs/SDMatte.py"
-CKPT_DIR="checkpoints/SDMatte.pth"
+CKPT_DIR="SDMatte/SDMatte.pth"
 INFER_DIR="infer_output/SDMatte/bbox/${SETNAME}"
 RESULT_PATH="${INFER_DIR}_result.txt"
 

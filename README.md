@@ -97,22 +97,10 @@ Extensive experiments on multiple datasets demonstrate the superior performance 
 
 * Check lines 15–56 and 529–530 in `SDMatte/data/dataset.py` to modify the data path to your data path.
 
-## Pretrained Model
-
-* Get [Stable Diffusion v2](https://huggingface.co/stabilityai/stable-diffusion-2) as pretrained weigth of SDMatte and SDMatte<sup>*</sup>.
-
-* Get [BK SDM v2](https://huggingface.co/nota-ai/bk-sdm-v2-base) and [Tiny VAE](https://huggingface.co/madebyollin/taesd) as pretrained weigth of LiteSDMatte.
-
-* Add the following settings to `unet/config.json`.
-  ``` 
-  "bbox_time_embed_dim": 320,
-  "point_embeddings_input_dim": 1680,
-  "bbox_embeddings_input_dim": 1280,
-  ```
-* Run `process_weight.py` to perform the necessary processing on the pretrained weights.
-* In `configs/SDMatte.py`, replace the path at line 30 with your pretrained weights path.
-
-
 ## Test
 
-* Replace line 22 in `configs/SDMatte.py` or `configs/LiteSDMatte.py` with the path to your trained weights, and then run `bash script/test.sh` to test.
+* Download the pre-trained weights from the Hugging Face repository [LongfeiHuang/SDMatte](https://huggingface.co/LongfeiHuang/SDMatte)
+
+* Modify the `pretrained_model_name_or_path` field in `configs/SDMatte.py` to the directory path containing the configuration files, so that the model can be properly initialized.
+
+* Modify the `CKPT_DIR` parameter in `script/test.sh` to the specific path of the downloaded weight file, and then run the script using `bash script/test.sh`.
