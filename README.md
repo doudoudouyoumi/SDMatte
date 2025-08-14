@@ -111,6 +111,17 @@ Extensive experiments on multiple datasets demonstrate the superior performance 
 
 This project is licensed under <a rel="license" href="./LICENSE">MIT</a>. Redistribution and use should follow this license.
 
+## ✏️ Cite Us
+If you find this repository or our work useful, please consider citing us:
+```
+@inproceedings{huang2025sdmatte,
+  title={SDMatte: Grafting Diffusion Models for Interactive Matting},
+  author={Huang, Longfei and Liang, Yu and Zhang, Hao and Chen, Jinwei and Dong, Wei and Chen, Lunde and Liu, Wanyu and Li, Bo and Jiang, Peng-Tao},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  year={2025}
+}
+```
+
 ## 👏 Acknowledgement
 
 Our repo is built upon [Stable Diffusion 2](https://github.com/Stability-AI/stablediffusion), [TAESD](https://github.com/madebyollin/taesd), and [BK-SDM](https://github.com/Nota-NetsPresso/BK-SDM). We sincerely thank the authors for their contributions to the community.
