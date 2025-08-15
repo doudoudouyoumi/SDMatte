@@ -37,6 +37,10 @@
 - [2025.07.31] This repo is created. 
 - [2025.06.26] Paper accepted by ICCV 2025.
 
+## 🤝 Community Works
+If your work has improved **SDMatte** and you would like more people to see it, please inform us.
+- [ComfyUI-SDMatte](https://github.com/flybirdxx/ComfyUI-SDMatte), a ComfyUI custom node built on SDMatte, offers interactive high-precision image matting with refined edge detail preservation and optimized VRAM efficiency. Refer to [their GitHub page](https://github.com/flybirdxx/ComfyUI-SDMatte) for more information.
+
 ## 📖 Overview
 ### Abstract
 
