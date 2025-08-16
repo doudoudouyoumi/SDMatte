@@ -9,9 +9,7 @@ checkpoints/
 engine/
 dinov2/
 detectron2/
-modeling/LiteSDMatte/
 
-configs/LiteSDMatte.py
 script/eva.sh
 script/train.sh
 script/infer.sh

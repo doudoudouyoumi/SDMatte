@@ -92,22 +92,33 @@ Extensive experiments on multiple datasets demonstrate the superior performance 
 
 * Check lines 15–56 and 529–530 in `SDMatte/data/dataset.py` to modify the data path to your data path.
 
-## 🔍 Test
+## 📦 Model Zoo
 
-* Download the model weights from the Hugging Face repository [LongfeiHuang/SDMatte](https://huggingface.co/LongfeiHuang/SDMatte)
+* Download the weights and configurations of SDMatte and SDMatte* from the Hugging Face repository [LongfeiHuang/SDMatte](https://huggingface.co/LongfeiHuang/SDMatte)
+* Download the weight and configuration of LiteSDMatte from the Hugging Face repository [LongfeiHuang/LiteSDMatte](https://huggingface.co/LongfeiHuang/LiteSDMatte)
+
+## 🔍 Test
 
 * Modify the `pretrained_model_name_or_path` field in `configs/SDMatte.py` to the directory path containing the configuration files, so that the model can be properly initialized.
 
-* Modify the `CKPT_DIR` parameter in `script/test.sh` to the specific path of the downloaded weight file, and then run the script using `bash script/test.sh`.
+* Modify the `CKPT_DIR` parameter in `script/test_SDMatte.sh` or `script/test_SDMatte.sh` to the specific path of the downloaded weight file.
+
+* Run the following command to evaluate **SDMatte** or **LiteSDMatte**.
+
+    ```
+    bash script/test_SDMatte.sh
+    bash script/test_LiteSDMatte.sh
+    ```
+
 
 ## 📋 TodoList
 
 - [x] Publish paper on arXiv  
 - [x] Release source code for SDMatte  
 - [x] Release evaluation codes  
-- [ ] Release pretrained weights for SDMatte and SDMatte*  
-- [ ] Release source code for LiteSDMatte  
-- [ ] Release pretrained weights for LiteSDMatte  
+- [x] Release pretrained weights for SDMatte and SDMatte*  
+- [x] Release source code for LiteSDMatte  
+- [x] Release pretrained weights for LiteSDMatte  
 - [ ] Release training code
 - [ ] Deploy interactive demo using Gradio or on Hugging Face Spaces  
 

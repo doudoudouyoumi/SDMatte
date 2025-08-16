@@ -48,45 +48,11 @@ def matting_inference(
 
     # inferencing
     os.makedirs(inference_dir, exist_ok=True)
-    # image_dir = inference_dir.replace(args.setname, args.setname + "_Image")
-    # os.makedirs(image_dir, exist_ok=True)
 
     start_time = time.time()
     for data in tqdm(test_loader):
         image_name = data["image_name"][0]
         H, W = data["hw"][0].item(), data["hw"][1].item()
-
-        # # image
-        # image = data["image"]
-        # image = (image + 1) / 2
-        # image = image.squeeze(0).permute(1, 2, 0) * 255
-        # image = cv2.resize(image.detach().cpu().numpy(), (W, H)).astype(np.uint8)
-        # red = np.array([[255.0, 0.0, 0.0]], dtype=image.dtype)
-        # blue = np.array([[0, 0.0, 255.0]], dtype=image.dtype)
-        # if cfg.hy_dict.model_kwargs.aux_input == "bbox_mask":
-        #     coords = data["bbox_coords"][0]
-        #     x_min, y_min, x_max, y_max = (
-        #         int(coords[0].item() * W),
-        #         int(coords[1].item() * H),
-        #         int(coords[2].item() * W),
-        #         int(coords[3].item() * H),
-        #     )
-        #     image[y_min:y_max, x_min, :] = red
-        #     image[y_min:y_max, x_max, :] = red
-        #     image[y_min, x_min:x_max, :] = red
-        #     image[y_max, x_min:x_max, :] = red
-        # elif cfg.hy_dict.model_kwargs.aux_input == "point_mask":
-        #     point_mask = data["point_mask"]
-        #     point_mask = (point_mask + 1) / 2
-        #     # point_mask = point_mask * 255.0
-        #     point_mask = cv2.resize(point_mask.flatten(0, 2).detach().cpu().numpy(), (W, H), interpolation=cv2.INTER_NEAREST)
-        #     if len(np.unique(point_mask)) == 3:
-        #         image[point_mask == 0] = red
-        #         image[point_mask == 1] = blue
-        #     elif len(np.unique(point_mask)) == 2:
-        #         image[point_mask == 1] = red
-        # image = F.to_pil_image(image).convert("RGB")
-        # image.save(join(image_dir, image_name[:-4] + ".jpg"))
 
         with torch.no_grad():
             pred = model(data)
