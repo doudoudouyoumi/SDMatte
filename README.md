@@ -32,6 +32,8 @@
 </div>
 
 ## 📢 News
+- [2025.08.16] Released the LiteSDMatte weights.  
+- [2025.08.05] Released the SDMatte and SDMatte* weights.
 - [2025.08.04] Released evaluation codes. 
 - [2025.08.01] Published the [arXiv preprint](https://arxiv.org/abs/2508.00443).  
 - [2025.07.31] This repo is created. 
