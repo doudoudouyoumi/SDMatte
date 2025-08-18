@@ -96,7 +96,7 @@ Extensive experiments on multiple datasets demonstrate the superior performance 
 
 ## 📦 Model Zoo
 
-* Download the weights and configurations of **SDMatte** and **SDMatte<sup>*</sup>**,** from the Hugging Face repository [LongfeiHuang/SDMatte](https://huggingface.co/LongfeiHuang/SDMatte)
+* Download the weights and configurations of **SDMatte** and **SDMatte<sup>*</sup>** from the Hugging Face repository [LongfeiHuang/SDMatte](https://huggingface.co/LongfeiHuang/SDMatte)
 * Download the weight and configuration of **LiteSDMatte** from the Hugging Face repository [LongfeiHuang/LiteSDMatte](https://huggingface.co/LongfeiHuang/LiteSDMatte)
 
 ## 🔍 Test
