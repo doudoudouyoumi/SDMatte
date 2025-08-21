@@ -43,6 +43,7 @@
 If your work has improved **SDMatte** and you would like more people to see it, please inform us.
 - [ComfyUI-SDMatte](https://github.com/flybirdxx/ComfyUI-SDMatte), a ComfyUI custom node built on SDMatte, offers interactive high-precision image matting with refined edge detail preservation and optimized VRAM efficiency.
 
+- [ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG/blob/main/update.md#v290-20250818), a ComfyUI custom node that incorporates SDMatte into their framework. This contribution highlights the practical integration of SDMatte, while further introducing real-time background replacement and enhanced edge refinement for improved accuracy.
 ## 📖 Overview
 ### Abstract
 
